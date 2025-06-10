@@ -7,7 +7,7 @@ use Illuminate\Filesystem\FilesystemAdapter;
 use Back\LaravelObs\Plugins\Internal\Common\Model;
 use Back\LaravelObs\Plugins\ObsClient;
 use Back\LaravelObs\Plugins\ObsException;
-
+use League\Flysystem\PathPrefixer;
 class HuaweiObsAdapter extends FilesystemAdapter
 {
     protected ObsClient $client;
@@ -48,7 +48,7 @@ class HuaweiObsAdapter extends FilesystemAdapter
         $this->cdn_domain = $cdnDomain;
         $this->options = $options;
 
-        $this->setPathPrefix($prefix);
+        $this->prefixer = new PathPrefixer($prefix, DIRECTORY_SEPARATOR);
         $this->initClient();
         $this->checkEndpoint();
     }

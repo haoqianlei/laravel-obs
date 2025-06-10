@@ -18,7 +18,7 @@
     "require": {
         "php": "^7.4|^8.0",
         "guzzlehttp/guzzle": "^7.4",
-        "illuminate/filesystem": "*"
+        "illuminate/filesystem": "^11.45"
     },
     "require-dev": {
         "phpunit/phpunit": "^9.0",
