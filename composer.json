@@ -17,12 +17,12 @@
     ],
     "require": {
         "php": "^7.4|^8.0",
-        "guzzlehttp/guzzle": "^7.4"
+        "guzzlehttp/guzzle": "^7.4",
+        "illuminate/filesystem": "^11.45"
     },
     "require-dev": {
-        "orchestra/testbench": "^6.0",
         "phpunit/phpunit": "^9.0",
-        "illuminate/support": "self.version"
+        "illuminate/support": "^11.0"
     },
     "autoload": {
         "psr-4": {

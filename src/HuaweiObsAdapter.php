@@ -3,13 +3,12 @@
 namespace Back\LaravelObs;
 
 use Illuminate\Support\Carbon;
-use League\Flysystem\Adapter\AbstractAdapter;
-use League\Flysystem\Config;
+use Illuminate\Filesystem\FilesystemAdapter;
 use Back\LaravelObs\Plugins\Internal\Common\Model;
 use Back\LaravelObs\Plugins\ObsClient;
 use Back\LaravelObs\Plugins\ObsException;
 
-class HuaweiObsAdapter extends AbstractAdapter
+class HuaweiObsAdapter extends FilesystemAdapter
 {
     protected ObsClient $client;
 
@@ -105,10 +104,10 @@ class HuaweiObsAdapter extends AbstractAdapter
      *
      * @param string $path
      * @param string $contents
-     * @param Config $config
+     * @param array $options
      * @return array|false
      */
-    public function write($path, $contents, Config $config)
+    public function write($path, $contents, array $options = [])
     {
         try {
             return $this->client->putObject([
@@ -128,10 +127,10 @@ class HuaweiObsAdapter extends AbstractAdapter
      *
      * @param string $path
      * @param resource $resource
-     * @param Config $config
+     * @param array $options
      * @return array|false
      */
-    public function writeStream($path, $resource, Config $config)
+    public function writeStream($path, $resource, array $options = [])
     {
         try {
             return $this->client->putObject([
@@ -151,12 +150,12 @@ class HuaweiObsAdapter extends AbstractAdapter
      *
      * @param string $path
      * @param string $contents
-     * @param Config $config
+     * @param array $options
      * @return array|false|Model
      */
-    public function update($path, $contents, Config $config)
+    public function update($path, $contents, array $options = [])
     {
-        return $this->write($path, $contents, $config);
+        return $this->write($path, $contents, $options);
     }
 
     /**
@@ -164,12 +163,12 @@ class HuaweiObsAdapter extends AbstractAdapter
      *
      * @param string $path
      * @param resource $resource
-     * @param Config $config
+     * @param array $options
      * @return array|false|Model
      */
-    public function updateStream($path, $resource, Config $config)
+    public function updateStream($path, $resource, array $options = [])
     {
-        return $this->writeStream($path, $resource, $config);
+        return $this->writeStream($path, $resource, $options);
     }
 
     /**
@@ -250,15 +249,15 @@ class HuaweiObsAdapter extends AbstractAdapter
      * Create a directory.
      *
      * @param string $dirname
-     * @param Config $config
+     * @param array $options
      * @return false|string
      */
-    public function createDir($dirname, Config $config)
+    public function createDir($dirname, array $options)
     {
         $defaultFile = trim($dirname, '/') . '/obs.txt';
 
         try {
-            $this->write($defaultFile, '当虚拟目录下有其他文件时，可删除此文件~', $config);
+            $this->write($defaultFile, '当虚拟目录下有其他文件时，可删除此文件~', $options);
         } catch (ObsException $e) {
             return false;
         }
