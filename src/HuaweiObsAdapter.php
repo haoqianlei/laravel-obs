@@ -36,9 +36,9 @@ class HuaweiObsAdapter extends FilesystemAdapter
      * @param $sslVerify
      * @param $cdnDomain
      * @param array $options
-     * @param null $prefix
+     * @param string|null $prefix
      */
-    public function __construct($key, $secret, $endpoint, $bucket, $sslVerify, $cdnDomain, array $options = [], $prefix = null)
+    public function __construct($key, $secret, $endpoint, $bucket, $sslVerify, $cdnDomain, array $options = [], ?string $prefix = '')
     {
         $this->key = $key;
         $this->secret = $secret;
