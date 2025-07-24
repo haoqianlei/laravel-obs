@@ -1,55 +1,51 @@
 {
-    "name": "back/laravel-obs",
-    "description": "Laravel 的华为云 obs 包",
-    "keywords": [
-        "back",
-        "laravel-obs"
-    ],
-    "homepage": "https://github.com/back/laravel-obs",
-    "license": "MIT",
-    "type": "library",
-    "authors": [
-        {
-            "name": "back",
-            "email": "haoqianlei@gmail.com",
-            "role": "Developer"
-        }
-    ],
-    "require": {
-        "php": "^7.4|^8.0",
-        "guzzlehttp/guzzle": "^6.0@dev",
-        "illuminate/support": "^8.77"
-    },
-    "require-dev": {
-        "orchestra/testbench": "^6.0",
-        "phpunit/phpunit": "^9.0"
-    },
-    "autoload": {
-        "psr-4": {
-            "Back\\LaravelObs\\": "src/"
-        }
-    },
-    "autoload-dev": {
-        "psr-4": {
-            "Back\\LaravelObs\\Tests\\": "tests"
-        }
-    },
-    "scripts": {
-        "test": "vendor/bin/phpunit",
-        "test-coverage": "vendor/bin/phpunit --coverage-html coverage"
-
-    },
-    "config": {
-        "sort-packages": true
-    },
-    "extra": {
-        "laravel": {
-            "providers": [
-                "Back\\LaravelObs\\HuaweiObsServiceProvider"
-            ],
-            "aliases": {
-                "LaravelObs": "Back\\LaravelObs\\HuaweiObsFacade"
-            }
-        }
+  "name": "back/laravel-filesystem-obs",
+  "description": "Laravel 的华为云 obs 包",
+  "keywords": [
+    "back",
+    "obs"
+  ],
+  "homepage": "https://github.com/back/obs",
+  "license": "MIT",
+  "type": "library",
+  "authors": [
+    {
+      "name": "back",
+      "email": "1300657068@qq.com",
+      "role": "Developer"
     }
+  ],
+  "require": {
+    "php": "^7.4|^8.0",
+    "ext-curl": "*",
+    "guzzlehttp/guzzle": "~6.0@dev"
+  },
+  "require-dev": {
+    "orchestra/testbench": "^6.0",
+    "phpunit/phpunit": "^9.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "Back\\Obs\\": "src"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Back\\Obs\\Tests\\": "tests"
+    }
+  },
+  "scripts": {
+    "test": "vendor/bin/phpunit",
+    "test-coverage": "vendor/bin/phpunit --coverage-html coverage"
+  },
+  "config": {
+    "sort-packages": true
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "Back\\Obs\\ObsServiceProvider"
+      ]
+    }
+  }
 }
